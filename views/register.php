@@ -1,10 +1,32 @@
 <h1>Register</h1>
-<form class="row g-3" method="post" >
-    <div class="col-md-6">
-        <label for="inputEmail4" class="form-label">FirstName</label>
-        <input type="text" class="form-control" name="firstName" >
+<?php $form = \app\core\form\Form::begin('' , "post") ?>
+    
+    <div class="row">
+        <div class="col">
+        <?php echo $form->field($model , 'firstName') ?>
+        </div>
 
-        
+        <div class="col">
+        <?php echo $form->field($model , 'lastName') ?>
+        </div>
+    </div>
+    <?php echo $form->field($model , 'email')->emailField() ?>
+    <?php echo $form->field($model , 'password')->passwordField()?>
+    <?php echo $form->field($model , 'confirmPassword')->passwordField()?>
+    
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </div>
+<?php $form = \app\core\form\Form::end() ?>
+<!-- <form class="row g-3" method="post" >
+    
+    <div class="form-group">
+        <label  class="form-label">FirstName</label>
+        <input type="text"  name="firstName" value = "<?php // echo  $model->firstName ?>"
+            class="form-control <?php // echo $model->hasError('firstName') ? ' is-invalid' : '' ?>" >
+        <div class="invalid-feedback">
+            <?php //echo  $model->getFirstError('firstName') ?>
+        </div>
     </div>
     <div class="col-md-6">
         <label for="inputEmail4" class="form-label">LastName</label>
@@ -20,34 +42,7 @@
         <label for="inputPassword4" class="form-label">Confirm Password</label>
         <input type="password" class="form-control" name="confirmPassword">
     </div>
-    <!-- <div class="col-12">
-        <label for="inputAddress2" class="form-label">Address 2</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-    </div>
-    <div class="col-md-6">
-        <label for="inputCity" class="form-label">City</label>
-        <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="col-md-4">
-        <label for="inputState" class="form-label">State</label>
-        <select id="inputState" class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
-        </select>
-    </div>
-    <div class="col-md-2">
-        <label for="inputZip" class="form-label">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
-    </div>
-    <div class="col-12">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-                Check me out
-            </label>
-        </div>
-    </div> -->
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Sign up</button>
     </div>
-</form>
+</form> -->

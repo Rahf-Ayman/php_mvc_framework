@@ -22,24 +22,27 @@ class AuthController extends Controller
         if ($request->isPost()) {
             // Logic to handle registration
             $registerModel->loadData($request->getBody());
-            echo '<pre>';
-            var_dump($registerModel); // Debugging line to check the loaded data\  
-            echo '</pre>';
+            // echo '<pre>';
+            // var_dump($registerModel); // Debugging line to check the loaded data\  
+            // echo '</pre>';
 
             if ($registerModel->validate() && $registerModel->register()) {
                 // Redirect to success page or login page
                 return 'Registration successful';
             }
-            
+            // echo '<pre>';
+            // var_dump($registerModel->errors); // Debugging line to check the errors
+            // echo '</pre>';
+            // exit;
             return $this->render('register' , [
                 'model' => $registerModel,
-                'errors' => $registerModel // Assuming you have an errors property in your model
+                
             ]);
         }
             // Handle GET request or other logic
             return $this->render('register' , [
                 'model' => $registerModel,
-                'errors' => $registerModel // Assuming you have an errors property in your model
+                
             ]);
         
         // Render the registration form if not a POST request
