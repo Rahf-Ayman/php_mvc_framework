@@ -12,8 +12,9 @@ class Application
     public static Application $app;
     public static string $ROOT_DIR;
     public Controller $controller;
+    public Database $db;
 
-    public function __construct($rootPath)
+    public function __construct($rootPath , array $config)
     {
         self::$ROOT_DIR = $rootPath;
         self::$app = $this;
@@ -21,6 +22,7 @@ class Application
         $this->response = new Response();
 
         $this->router = new Router($this->request, $this->response);
+        $this->db = new Database($config['db']);
     }
 
     public function run()
