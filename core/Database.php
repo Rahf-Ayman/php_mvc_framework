@@ -79,5 +79,7 @@ class Database
         echo '[' . date('Y-m-d H:i:s') . '] - ' . $message . PHP_EOL;
     }
 
-    
+    public function prepare($sql){
+        return $this->pdo->prepare($sql);
+    }
 }

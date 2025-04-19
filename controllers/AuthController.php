@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
 use app\models\RegisterModel;
@@ -28,6 +29,7 @@ class AuthController extends Controller
 
             if ($registerModel->validate() && $registerModel->register()) {
                 // Redirect to success page or login page
+                Application::$app->response->redirect('/');
                 return 'Registration successful';
             }
             // echo '<pre>';

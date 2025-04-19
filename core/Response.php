@@ -9,4 +9,9 @@ class  Response
     {
         http_response_code($status);
     }
+
+    public function redirect($str){
+        header('Location: ' . $str);
+        exit;
+    }
 }
