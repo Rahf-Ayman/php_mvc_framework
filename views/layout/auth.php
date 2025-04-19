@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,6 +42,7 @@
     </nav> -->
 
     <div class="container">
+        
         {{content}}
     </div>
 

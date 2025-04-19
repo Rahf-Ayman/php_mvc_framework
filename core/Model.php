@@ -33,7 +33,8 @@ abstract class Model{
                 if ($ruleName === self::RULE_MAX && strlen($value) > $rule['max']) {
                     $this->addError($attribute, self::RULE_MAX , $rule); 
                 }
-                if ($ruleName === self::RULE_MATCH && $value !== $this->{$rule['match']}) {   
+                if ($ruleName === self::RULE_MATCH && $value !== $this->{$rule['match']}) { 
+                    $rule['match'] = $this->getLabel($rule['match']);
                     $this->addError($attribute, self::RULE_MATCH , $rule);
                 }
                 if ($ruleName === self::RULE_UNIQUE) {
@@ -44,8 +45,9 @@ abstract class Model{
                     $statement = Application::$app->db->prepare("SELECT * FROM $tableName WHERE $uniqueAttribute = :attr");
                     $statement->bindValue(':attr', $value);
                     $statement->execute();
-                    if ($statement->fetch()) {
-                        $this->addError($attribute, self::RULE_UNIQUE , ['field' => $uniqueAttribute] );
+                    $record = $statement->fetchObject();
+                    if ($record) {
+                        $this->addError($attribute, self::RULE_UNIQUE , ['field' => $this->getLabel($attribute) ]);    
                     }
                 }           
             }
@@ -82,6 +84,15 @@ abstract class Model{
     }
 
     abstract public function rules(): array;
+
+    public function labels(): array
+    {
+        return [];
+    }
+
+    public function getLabel($attribute){
+        return $this->labels()[$attribute] ?? $attribute;
+    }
 
     public function hasError($attribute){
         return $this->errors[$attribute] ?? false;

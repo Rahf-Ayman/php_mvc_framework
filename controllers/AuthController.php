@@ -29,8 +29,9 @@ class AuthController extends Controller
 
             if ($registerModel->validate() && $registerModel->register()) {
                 // Redirect to success page or login page
+                Application::$app->session->setFlash('success', 'Registration successful. You can now log in.');
                 Application::$app->response->redirect('/');
-                return 'Registration successful';
+                exit;
             }
             // echo '<pre>';
             // var_dump($registerModel->errors); // Debugging line to check the errors
