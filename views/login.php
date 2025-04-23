@@ -1,5 +1,16 @@
 <h1>Login</h1>
-<form action="" method="post">
+
+<?php $form = \app\core\form\Form::begin('' , "post") ?>
+    
+    <?php echo $form->field($model , 'email')->emailField() ?>
+    <?php echo $form->field($model , 'password')->passwordField()?>
+    
+    
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">login</button>
+    </div>
+<?php $form = \app\core\form\Form::end() ?>
+<!-- <form action="" method="post">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
@@ -14,4 +25,4 @@
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</form> -->

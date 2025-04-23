@@ -2,15 +2,20 @@
 
 namespace app\models;
 
-
-use app\core\DbModel;
+use app\core\Application;
+use app\core\Response;
+use app\core\Request;
+use app\core\UserModel;
 use app\core\Model;
-class RegisterModel extends DbModel {
+class RegisterModel extends UserModel {
 
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;
     const STATUS_DELETED = 2;
 
+    public string $id = '';
+    public string $createdAt='';
+    public string $updatedAt='';
     public string $firstName = '';
     public string $lastName = '';
     public string $email = '';
@@ -27,7 +32,10 @@ class RegisterModel extends DbModel {
         return $this->save();
     }
 
-    
+    public static function primaryKey() :string
+    {
+        return 'id';
+    }
 
     public function rules() : array{
         return[
@@ -43,7 +51,7 @@ class RegisterModel extends DbModel {
         ];
     }
 
-    public function tableName(): string
+    public static function tableName(): string
     {
         return 'users';
     }
@@ -62,5 +70,12 @@ class RegisterModel extends DbModel {
             'confirmPassword' => 'Confirm Password'
         ];
     }
+
+    public function getDisplayName(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
+    
     
 }

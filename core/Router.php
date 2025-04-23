@@ -43,7 +43,7 @@ class Router
             Application::$app->controller = new $callback[0](); // this will create an instance of the class
             $callback[0] = Application::$app->controller;
         }
-        return call_user_func($callback, $this->request); // this will call the function and pass the request object to it
+        return call_user_func($callback, $this->request , $this->response); // this will call the function and pass the request object to it
     }
 
     public function renderView($view, $params = [])
