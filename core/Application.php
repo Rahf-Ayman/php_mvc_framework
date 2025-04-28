@@ -5,16 +5,17 @@ namespace app\core;
 
 class Application
 {
+    public string $layout = 'main'; // this will be used to set the layout of the application
     public string $userClass;
     public Router $router;
     public Request $request;
     public Response $response;
     public static Application $app;
     public static string $ROOT_DIR;
-    public Controller $controller;
+    public ?Controller $controller = null; // this will be used to set the controller of the application
     public Database $db;
     public Session $session;
-    public ?DbModel $user; // this will be used to get the user model from the database
+    public ?UserModel $user; // this will be used to get the user model from the database
 
     public function __construct($rootPath , array $config)
     {
@@ -44,7 +45,14 @@ class Application
 
     public function run()
     {
-        echo $this->router->resolve();   //echoooooooooooooooo
+        try{
+            echo $this->router->resolve();   //echoooooooooooooooo
+        }catch (\Exception $e) {
+            $this->response->setStatus($e->getCode()); // this will set the status code to 500
+            echo $this->router->renderView('_error', [
+                'exception' => $e
+            ]);
+        }
     }
 
     public function getController()

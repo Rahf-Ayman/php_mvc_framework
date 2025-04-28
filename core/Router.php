@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+use app\core\exception\ForbiddenException;
+use app\core\exception\NotFoundException;
 class Router
 {
     protected array $routes = [];
@@ -32,15 +34,24 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if ($callback === false) {
-            $this->response->setStatus(404);
-            return $this->rendererrorView();
-            exit;
+            throw new NotFoundException(); // this will throw an exception if the route is not found
+            
         }
+
         if (is_string($callback)) {
             return $this->renderView($callback);
         }
+
         if (is_array($callback)) {
-            Application::$app->controller = new $callback[0](); // this will create an instance of the class
+            
+            $controller = new $callback[0](); // this will create an instance of the class
+            Application::$app->controller = $controller; // this will set the controller of the application
+            $controller->action = $callback[1]; // this will set the action of the controller
+            
+            foreach ($controller->getMiddlewares() as $middleware) {
+                $middleware->execute(); // this will execute the middleware
+            }
+            
             $callback[0] = Application::$app->controller;
         }
         return call_user_func($callback, $this->request , $this->response); // this will call the function and pass the request object to it
@@ -77,7 +88,11 @@ class Router
 
     protected function layoutContent()
     {
-        $layout = Application::$app->controller->layout;
+        $layout = Application::$app->layout; // this will be used to get the layout of the application
+        if(Application::$app->controller){
+            $layout = Application::$app->controller->layout;
+        }
+        
         ob_start();
         include_once Application::$ROOT_DIR . "/views/layout/$layout.php";
         return ob_get_clean();
