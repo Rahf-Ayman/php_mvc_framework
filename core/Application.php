@@ -14,7 +14,7 @@ class Application
     public Controller $controller;
     public Database $db;
     public Session $session;
-    public ?DbModel $user = null; // this will be used to get the user model from the database
+    public ?DbModel $user; // this will be used to get the user model from the database
 
     public function __construct($rootPath , array $config)
     {
@@ -27,12 +27,18 @@ class Application
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config['db']);
 
-        $primaryValue = $this->session->get('user');
+        $primaryValue = $this->session->get('user'); // this will be used to get the user id from the session
         if ($primaryValue) {
             
             $primaryKey = $this->userClass::primaryKey();
             
+            if ($this->userClass::findOne([$primaryKey => $primaryValue]) === false) {
+                $this->session->remove('user'); // remove the user from the session if it does not exist in the database
+            }
             $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
+             // this will be used to get the user name from the database
+        }else {
+            $this->user = null;
         }
     }
 

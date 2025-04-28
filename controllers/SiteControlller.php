@@ -25,9 +25,7 @@ class SiteControlller extends Controller
     {
 
         $body = $request->getBody();
-        echo "<pre>";
-        var_dump($body);
-        echo "<pre>";
+        
         return "Handling contact form";
     }
 }

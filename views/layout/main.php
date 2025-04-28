@@ -1,9 +1,6 @@
 <?php use app\core\Application; 
 use app\core\RegisterModel; ?>
-echo '<pre>';
-echo var_dump(Application::$app->user);
-echo '</pre>';
-?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,7 +10,7 @@ echo '</pre>';
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/bootstrap.css">
     <title><?php echo $this->title ?></title>
