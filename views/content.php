@@ -1,7 +1,7 @@
 <h1>Contanct us</h1>
 <form action="" method="post">
     <div class="mb-3">
-        <label  class="form-label">Subject</label>
+        <label class="form-label">Subject</label>
         <input type="text" class="form-control" name="subject" aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
