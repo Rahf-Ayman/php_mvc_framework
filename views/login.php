@@ -1,6 +1,11 @@
+<?php
+
+use app\core\form\Form;
+$this->title = "Login";
+?>
 <h1>Login</h1>
 
-<?php $form = \app\core\form\Form::begin('' , "post") ?>
+<?php $form = Form::begin('' , "post") ?>
 
 <?php echo $form->field($model , 'email')->emailField() ?>
 <?php echo $form->field($model , 'password')->passwordField()?>
@@ -9,7 +14,7 @@
 <div class="col-12">
     <button type="submit" class="btn btn-primary">login</button>
 </div>
-<?php $form = \app\core\form\Form::end() ?>
+<?php $form = Form::end() ?>
 <!-- <form action="" method="post">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>

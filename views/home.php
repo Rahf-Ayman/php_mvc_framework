@@ -1,4 +1,9 @@
-<?php use app\core\Application; ?>
+<?php
+use app\core\Application;
+
+$this->title = "Home";
+?>
+
 <h1>Hello World</h1>
 <?php if (Application::isGuest()): ?>
 <h1>Welcome Guest</h1>

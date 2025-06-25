@@ -14,8 +14,10 @@ abstract class Model{
     function validate(){
 
         $rules = $this->rules();
+        
         foreach ($rules as $attribute => $rules) {
             $value = $this->{$attribute};
+            
             foreach ($rules as $rule) {
                 $ruleName = $rule;
                 if (!is_string($ruleName)) {
@@ -52,6 +54,7 @@ abstract class Model{
                 }           
             }
         }
+         
         return empty($this->errors);
     }
     private function addError (string $attribute, string $rule , $params = []){

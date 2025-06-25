@@ -20,7 +20,7 @@ class LoginForm extends Model
     }
 
     public function login(){
-        $registerModel = new RegisterModel();
+        $registerModel = new User();
         $user = $registerModel->findOne(['email' => $this->email]);
         if (!$user) {
             $this->addErrorForMessage('email', 'User does not exist');

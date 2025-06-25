@@ -13,7 +13,7 @@ $dotenv->load();
 
 
 $config = [
-    'userClass' => \app\models\RegisterModel::class,
+    'userClass' => \app\models\User::class,
     'db' => [
         'dsn' => $_ENV['DB_DSN'] ,
         'user' => $_ENV['DB_USER'] ,
@@ -26,7 +26,7 @@ $app = new Application(dirname(__DIR__) , $config);
 $app->router->get('/', [SiteControlller::class, 'home']);
 
 $app->router->get('/contact', [SiteControlller::class, 'contact']);
-$app->router->post('/contact', [SiteControlller::class, 'handleContact']);
+$app->router->post('/contact', [SiteControlller::class, 'contact']);
 
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->post('/login', [AuthController::class, 'login']);

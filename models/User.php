@@ -7,7 +7,7 @@ use app\core\Response;
 use app\core\Request;
 use app\core\UserModel;
 use app\core\Model;
-class RegisterModel extends UserModel {
+class User extends UserModel {
 
     const STATUS_INACTIVE = 0;
     const STATUS_ACTIVE = 1;

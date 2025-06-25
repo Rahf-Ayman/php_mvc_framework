@@ -16,9 +16,11 @@ class Application
     public Database $db;
     public Session $session;
     public ?UserModel $user; // this will be used to get the user model from the database
+    public View  $view;
 
     public function __construct($rootPath , array $config)
     {
+        $this->user = null;
         $this->userClass = $config['userClass'];
         self::$ROOT_DIR = $rootPath;
         self::$app = $this;
@@ -27,6 +29,7 @@ class Application
         $this->session = new Session();
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config['db']);
+        $this->view = new View();
 
         $primaryValue = $this->session->get('user'); // this will be used to get the user id from the session
         if ($primaryValue) {
@@ -49,7 +52,7 @@ class Application
             echo $this->router->resolve();   //echoooooooooooooooo
         }catch (\Exception $e) {
             $this->response->setStatus($e->getCode()); // this will set the status code to 500
-            echo $this->router->renderView('_error', [
+            echo $this->view->renderView('_error', [
                 'exception' => $e
             ]);
         }

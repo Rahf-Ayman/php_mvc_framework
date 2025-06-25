@@ -39,7 +39,7 @@ class Router
         }
 
         if (is_string($callback)) {
-            return $this->renderView($callback);
+            return Application::$app->view->renderView($callback);
         }
 
         if (is_array($callback)) {
@@ -49,7 +49,7 @@ class Router
             $controller->action = $callback[1]; // this will set the action of the controller
             
             foreach ($controller->getMiddlewares() as $middleware) {
-                $middleware->execute(); // this will execute the middleware
+                $middleware->execute();
             }
             
             $callback[0] = Application::$app->controller;
@@ -57,54 +57,5 @@ class Router
         return call_user_func($callback, $this->request , $this->response); // this will call the function and pass the request object to it
     }
 
-    public function renderView($view, $params = [])
-    {
 
-        $layoutContent = $this->layoutContent();
-        $viewContent = $this->renderOnlyViews($view, $params);
-
-        return str_replace('{{content}}', $viewContent, $layoutContent); // the problem in echooo
-
-    }
-
-    public function rendererrorView()
-    {
-        ob_start();
-        include_once Application::$ROOT_DIR . "/views/_404.php";
-        return ob_get_clean();
-    }
-
-    public function renderContent($viewcontent)
-    {
-
-        $layoutContent = $this->layoutContent();
-
-
-        // echo $layoutContent ." " .$viewContent;
-
-        return str_replace('{{content}}', $viewcontent, $layoutContent); // the problem in echooo
-
-    }
-
-    protected function layoutContent()
-    {
-        $layout = Application::$app->layout; // this will be used to get the layout of the application
-        if(Application::$app->controller){
-            $layout = Application::$app->controller->layout;
-        }
-        
-        ob_start();
-        include_once Application::$ROOT_DIR . "/views/layout/$layout.php";
-        return ob_get_clean();
-    }
-
-    protected function renderOnlyViews($view, $params)
-    {
-        foreach ($params as $key => $value) {
-            $$key = $value; // this will create a variable with the name of the key and assign it the value
-        }
-        ob_start();
-        include_once Application::$ROOT_DIR . "/views/$view.php";
-        return ob_get_clean();
-    }
 }

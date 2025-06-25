@@ -6,7 +6,7 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
 use app\core\Response;
-use app\models\RegisterModel;
+use app\models\User;
 use app\models\LoginForm;
 use app\core\middlewares\AuthMiddleware;
 use app\core\middlewares\ForbiddenMiddleware;
@@ -39,7 +39,7 @@ class AuthController extends Controller
     public function register(Request $request) //Dependancy Injection
     {
         $this->setLayout('auth');
-        $registerModel = new RegisterModel();
+        $registerModel = new User();
         if ($request->isPost()) {
             // Logic to handle registration
             $registerModel->loadData($request->getBody());
