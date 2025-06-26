@@ -1,14 +1,6 @@
 {
     "name": "hp/mvc_training",
     
-    
-    "authors": [
-        {
-            "name": "Rahf Ayman",
-            "email": "rahf.family@gmail.com"
-        }
-    
-    ],
     "autoload": {
             "psr-4": {
                 "app\\": "./"
