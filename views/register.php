@@ -1,5 +1,5 @@
 <h1>Register</h1>
-<?php $form = \app\core\form\Form::begin('', "post") ?>
+<?php $form = \McQueen\phpmvc\form\Form::begin('', "post") ?>
 
 <div class="row">
     <div class="col">
@@ -17,4 +17,4 @@
 <div class="col-12">
     <button type="submit" class="btn btn-primary">Sign up</button>
 </div>
-<?php $form = \app\core\form\Form::end() ?>
+<?php $form = \McQueen\phpmvc\form\Form::end() ?>

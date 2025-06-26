@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\core\db\DbModel;
+use McQueen\phpmvc\db\DbModel;
 
 class ContactForm extends DbModel
 

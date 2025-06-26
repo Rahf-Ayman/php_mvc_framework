@@ -1,6 +1,6 @@
 <?php
 
-use app\core\Application;
+use McQueen\phpmvc\Application;
 
 class m0003_create_table_contact 
 {

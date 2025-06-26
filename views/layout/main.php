@@ -1,6 +1,6 @@
 <?php
 
-use app\core\Application;
+use McQueen\phpmvc\Application;
 ?>
 
 <!doctype html>
@@ -69,7 +69,7 @@ use app\core\Application;
                 <p><?php echo Application::$app->session->getFlash('success') ?></p>
             </div>
         <?php endif; ?>
-        {{ content }}
+        {{content}}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

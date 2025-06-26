@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\core\UserModel;
+use McQueen\phpmvc\UserModel;
 
 class User extends UserModel {
 

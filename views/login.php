@@ -1,6 +1,6 @@
 <?php
 
-use app\core\form\Form;
+use McQueen\phpmvc\form\Form;
 
 $this->title = "Login";
 ?>

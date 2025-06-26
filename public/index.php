@@ -2,7 +2,7 @@
 
 use app\controllers\SiteControlller;
 use app\controllers\AuthController;
-use app\core\Application;
+use McQueen\phpmvc\Application;
 use app\models\User;
 
 

@@ -1,7 +1,7 @@
 <?php
 
-use app\core\form\Form;
-use app\core\form\TextareaField;
+use McQueen\phpmvc\form\Form;
+use McQueen\phpmvc\form\TextareaField;
 
 $this->title = "Contanct us";
 ?>
