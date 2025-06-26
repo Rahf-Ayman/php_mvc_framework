@@ -3,6 +3,8 @@
 
 namespace app\core;
 
+use app\core\db\Database;
+
 class Application
 {
     public string $layout = 'main'; // this will be used to set the layout of the application
@@ -68,7 +70,7 @@ class Application
         $this->controller = $controller;
     }
 
-    public function login(DbModel $user)
+    public function login(UserModel $user)
     {
         $this->user = $user;
         $primaryKey = $user->primaryKey(); // id

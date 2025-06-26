@@ -1,8 +1,5 @@
 <?php
 
-
-use app\controllers\SiteControlller;
-use app\controllers\AuthController;
 use app\core\Application;
 
 

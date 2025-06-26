@@ -7,7 +7,7 @@ use app\core\Model;
 class Form {
     
     public static function field(Model $model, $attribute) {
-        return new Field($model, $attribute);
+        return new InputField($model, $attribute);
     }
 
     public static function begin($action, $method = 'post') {

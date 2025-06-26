@@ -1,8 +1,10 @@
 <?php
 
-namespace app\core;
+namespace app\core\db;
 
-class Database 
+use app\core\Application;
+
+class Database
 {
     public \pdo $pdo;
 

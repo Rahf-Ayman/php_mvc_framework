@@ -2,8 +2,7 @@
 
 namespace app\models;
 
-use app\core\DbModel;
-use app\core\Application;
+use app\core\db\DbModel;
 
 class ContactForm extends DbModel
 

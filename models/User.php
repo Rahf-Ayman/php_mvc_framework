@@ -2,11 +2,8 @@
 
 namespace app\models;
 
-use app\core\Application;
-use app\core\Response;
-use app\core\Request;
 use app\core\UserModel;
-use app\core\Model;
+
 class User extends UserModel {
 
     const STATUS_INACTIVE = 0;
@@ -76,6 +73,4 @@ class User extends UserModel {
         return $this->firstName . ' ' . $this->lastName;
     }
 
-    
-    
 }

@@ -9,7 +9,7 @@ use app\core\Response;
 use app\models\User;
 use app\models\LoginForm;
 use app\core\middlewares\AuthMiddleware;
-use app\core\middlewares\ForbiddenMiddleware;
+
 class AuthController extends Controller
 {
     public function  __construct(){
@@ -43,9 +43,6 @@ class AuthController extends Controller
         if ($request->isPost()) {
             // Logic to handle registration
             $registerModel->loadData($request->getBody());
-            // echo '<pre>';
-            // var_dump($registerModel); // Debugging line to check the loaded data\  
-            // echo '</pre>';
 
             if ($registerModel->validate() && $registerModel->register()) {
                 // Redirect to success page or login page
@@ -53,10 +50,7 @@ class AuthController extends Controller
                 Application::$app->response->redirect('/');
                 exit;
             }
-            // echo '<pre>';
-            // var_dump($registerModel->errors); // Debugging line to check the errors
-            // echo '</pre>';
-            // exit;
+            
             return $this->render('register' , [
                 'model' => $registerModel,
                 

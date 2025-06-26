@@ -1,5 +1,7 @@
-<?php use app\core\Application; 
-use app\core\RegisterModel; ?>
+<?php
+
+use app\core\Application;
+?>
 
 <!doctype html>
 <html lang="en">
@@ -36,38 +38,38 @@ use app\core\RegisterModel; ?>
             </ul>
 
             <?php if (Application::isGuest()): ?>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/register">Register</a>
-                </li>
-            </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
+                </ul>
             <?php else: ?>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/profile">
-                        Profile
-                    </a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/logout">
-                        Welcome <?php echo Application::$app->user->getDisplayName() ?> (Logout)
-                    </a>
-                </li>
-            </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/profile">
+                            Profile
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/logout">
+                            Welcome <?php echo Application::$app->user->getDisplayName() ?> (Logout)
+                        </a>
+                    </li>
+                </ul>
             <?php endif; ?>
         </div>
     </nav>
 
     <div class="container">
         <?php if (Application::$app->session->getFlash('success')): ?>
-        <div class="alert alert-success">
-            <p><?php echo Application::$app->session->getFlash('success') ?></p>
-        </div>
+            <div class="alert alert-success">
+                <p><?php echo Application::$app->session->getFlash('success') ?></p>
+            </div>
         <?php endif; ?>
-        {{content}}
+        {{ content }}
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

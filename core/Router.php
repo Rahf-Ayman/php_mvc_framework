@@ -2,7 +2,6 @@
 
 namespace app\core;
 
-use app\core\exception\ForbiddenException;
 use app\core\exception\NotFoundException;
 class Router
 {
